@@ -10,7 +10,7 @@
 | --- | --- | --- | --- |
 | GET | `/` | 无 | 首页，包含导航链接、搜索表单和登录表单 |
 | GET | `/search` | `q` | 按关键字执行一次演示搜索并渲染结果页 |
-| GET | `/files` | `path` | 读取 `target/files/` 下的示例文件并展示内容 |
+| GET | `/files` | `path` | 读取 `target/files/` 下的示例文件并展示内容；对参数再做一次 URL 解码（双重解码缺陷） |
 | GET | `/profile` | `id` | 按 id 查询并展示用户资料 |
 | GET | `/login` | `username`、`password`（POST） | 校验用户名与口令并返回登录结果页 |
 

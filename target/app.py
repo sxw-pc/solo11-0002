@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import sqlite3
 from pathlib import Path
+from urllib.parse import unquote
 
 from flask import Flask, Response, current_app, request
 
@@ -92,6 +93,9 @@ def create_app(db_path: Path | None = None) -> Flask:
     def files() -> str | Response:
         relative = request.args.get("path", "readme.txt")
         # 故意不做目录约束：路径穿越注入点
+        # 故意多做一次 URL 解码：模拟对已解码输入再次解码的缺陷，
+        # 使 ..%252f 这类双重编码 payload 也会被还原成 ../ 后参与路径拼接
+        relative = unquote(relative)
         target = FILES_DIR / relative
         try:
             content = target.read_text(encoding="utf-8", errors="replace")
