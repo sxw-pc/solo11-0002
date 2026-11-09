@@ -1,0 +1,19 @@
+# scan-lab 扫描参数
+# 所有字段均可被 CLI 同名参数覆盖（--timeout / --rate-limit / --max-depth / --max-urls）
+http:
+  timeout: 5.0          # 单次请求超时（秒）
+  retries: 2            # 请求失败后的重试次数（不含首次）
+  rate_limit: 5.0       # 每秒最多请求数
+  user_agent: "scan-lab/0.1 (local-lab; authorized use only)"
+
+crawl:
+  max_depth: 2          # 同源 BFS 最大深度（起点为 0）
+  max_urls: 50          # 单次扫描最多访问的页面数
+  skip_keywords:        # 路径中包含这些关键字时跳过（避免危险操作）
+    - logout
+    - delete
+    - signout
+
+plugins:
+  - xss_reflect
+  - path_traversal

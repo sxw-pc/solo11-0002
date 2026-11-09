@@ -1,0 +1,8 @@
+# scan-lab 运行与测试依赖（全部锁定版本，离线可用）
+Flask==3.0.3
+requests==2.34.2
+beautifulsoup4==4.12.3
+pydantic==2.9.2
+typer==0.27.2
+PyYAML==6.0.2
+pytest==8.4.2

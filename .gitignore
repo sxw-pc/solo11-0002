@@ -1,0 +1,25 @@
+# 环境与密钥
+.env
+.env.*
+!.env.example
+
+# 扫描产物
+reports/
+
+# 本地数据库
+*.db
+
+# Python 缓存与虚拟环境
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# 日志
+*.log
+
+# 构建产物
+build/
+dist/
+*.egg-info/
